@@ -2142,8 +2142,22 @@ function library:Init()
 		TextColor3 = Color3.fromRGB(247, 3, 255),
 		Position = UDim2.new(0.45, 0,0, 190),
 	})
+	local Object = icon -- The object you want to tween.
+	local tweenInfo = TweenInfo.new(
+			1,
+			Enum.EasingStyle.Linear,
+			Enum.EasingDirection.Out,
+			1,
+			false,
+			0
+	)
+	local Tween = tweenService:Create(Object, tweenInfo, {Rotation = 360})
+	Tween:Play() -- Plays the tween
+	holder:TweenPosition(UDim2.new(0.308, 0,0.276, 0), "Out", "Linear", 2, true)
+	wait(2)
+	holder:TweenSize(UDim2.new(0, 502,0, 204), "Out", "Linear", .5, true)
 	print("hmm")
-	--[[getrenv().role = "| [member] |"
+	getrenv().role = "| [member] |"
 	getrenv().username = "| "..game.Players.LocalPlayer.Name.." |"
 	if getrenv().admin_accounts.creator_accounts[game.Players.LocalPlayer.UserId] then
 		getrenv().role = "| [dev] |"
@@ -2151,11 +2165,11 @@ function library:Init()
 	elseif getrenv().admin_accounts.smail_accounts[game.Players.LocalPlayer.UserId] then
 		getrenv().role = "| [staff] |"
 		getrenv().username = "| Smail |"
-	end]]
+	end
 	local infoHolder = library:Create("Frame", {
 		Active = true,
 		Draggable = true,
-		Parent = library.base,
+		Parent = self.base,
 		BackgroundColor3 = Color3.fromRGB(35, 35, 35),
 		BorderColor3 = Color3.fromRGB(255, 51, 255),
 		BorderSizePixel = 2,
@@ -2213,20 +2227,6 @@ function library:Init()
 		SortOrder = Enum.SortOrder.LayoutOrde,
 	})
 	print("hmmm2")
-	local Object = icon -- The object you want to tween.
-	local tweenInfo = TweenInfo.new(
-	    1,
-	    Enum.EasingStyle.Linear,
-	    Enum.EasingDirection.Out,
-	    1,
-	    false,
-	    0
-	)
-	local Tween = tweenService:Create(Object, tweenInfo, {Rotation = 360})
-	Tween:Play() -- Plays the tween
-	holder:TweenPosition(UDim2.new(0.308, 0,0.276, 0), "Out", "Linear", 2, true)
-	wait(2)
-	holder:TweenSize(UDim2.new(0, 502,0, 204), "Out", "Linear", .5, true)
 	txt.MouseButton1Down:Connect(function()
 		Tween:Play() -- Plays the tween
 		for i = 0, 1, .1 do
@@ -2240,6 +2240,7 @@ function library:Init()
 		end
 		holder:TweenPosition(UDim2.new(0.902, 0,0.684, 0), "Out", "Linear", 2, true)
 		holder:TweenSize(UDim2.new(0, 166,0, 192), "Out", "Linear", 2, true)
+		library:Close()
 	end)
 	for _, window in next, self.windows do
 		if window.canInit and not window.init then
@@ -2248,9 +2249,6 @@ function library:Init()
 			loadOptions(window)
 		end
 	end
-	txt.MouseButton1Down:Connect(function()
-			library:Close()
-	end)
 	game:GetService("RunService").RenderStepped:Connect(function()
 		infoHolder.BorderColor3 = getrenv().ui_settings.main_colour
 	end)
