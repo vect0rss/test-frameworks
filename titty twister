@@ -1,5 +1,4 @@
 local library = {flags = {}, windows = {}, open = true}
-print("?")
 
 --Services
 local runService = game:GetService"RunService"
@@ -90,7 +89,7 @@ end
 function library:SendNotification(text)
 	local Holder = library:Create("Frame",{
 		Name = "Notification",
-		Parent = self.base,
+		Parent = library.base,
 		BackgroundColor3 = Color3.fromRGB(35, 35, 35),
 		BorderSizePixel = 0,
 		ClipsDescendants = true,
@@ -2098,7 +2097,7 @@ function library:Init()
 	})
 	print("okk")
 	local holder = library:Create("ImageLabel", {
-		Parent = self.base,
+		Parent = library.base,
 		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 		BackgroundTransparency = 1.000,
 		ClipsDescendants = true,
@@ -2147,13 +2146,13 @@ function library:Init()
 
 	getrenv().role = "| [member] |"
 	getrenv().username = "| "..game.Players.LocalPlayer.Name.." |"
-	if getrenv().admin_accounts.creator_accounts[game.Players.LocalPlayer.UserId] then
+	--[[if getrenv().admin_accounts.creator_accounts[game.Players.LocalPlayer.UserId] then
 		getrenv().role = "| [dev] |"
 		getrenv().username = "| Max |"
 	elseif getrenv().admin_accounts.smail_accounts[game.Players.LocalPlayer.UserId] then
 		getrenv().role = "| [staff] |"
 		getrenv().username = "| Smail |"
-	end
+	end]]
 	local Object = icon -- The object you want to tween.
 	local tweenInfo = TweenInfo.new(
 	    1,
@@ -2242,7 +2241,13 @@ function library:Init()
 		FillDirection = Enum.FillDirection.Horizontal,
 		SortOrder = Enum.SortOrder.LayoutOrde,
 	})
-
+	txt.MouseButton1Down:Connect(function()
+      library:Close()
+	end)
+	game:GetService("RunService").RenderStepped:Connect(function()
+		infoHolder.BorderColor3 = getrenv().ui_settings.main_colour
+	end)
+	
 	for _, window in next, self.windows do
 		if window.canInit and not window.init then
 			window.init = true
@@ -2250,12 +2255,6 @@ function library:Init()
 			loadOptions(window)
 		end
 	end
-  txt.MouseButton1Down:Connect(function()
-      library:Close()
-	end)
-	game:GetService("RunService").RenderStepped:Connect(function()
-		infoHolder.BorderColor3 = getrenv().ui_settings.main_colour
-	end)
 	spawn(function()
 		pcall(function()
 			while wait() do
