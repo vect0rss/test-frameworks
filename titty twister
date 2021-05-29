@@ -99,7 +99,7 @@ function library:SendNotification(text)
 	local line = library:Create("Frame", {
 		Name = "Line",
 		Parent = Holder,
-		BackgroundColor3 = getrenv().ui_settings.main_colour
+		BackgroundColor3 = getrenv().ui_settings.main_colour,
 		BorderSizePixel = 0,
 		Position = UDim2.new(0, 0, 0.807692289, 0),
 		Size = UDim2.new(0, 1917, 0, 5)
