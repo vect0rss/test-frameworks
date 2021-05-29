@@ -90,7 +90,7 @@ end
 function library:SendNotification(text)
 	local Holder = library:Create("Frame",{
 		Name = "Notification",
-		Parent = game.CoreGui:WaitForChild("uwuware"),
+		Parent = self.base,
 		BackgroundColor3 = Color3.fromRGB(35, 35, 35),
 		BorderSizePixel = 0,
 		ClipsDescendants = true,
@@ -2098,7 +2098,7 @@ function library:Init()
 	})
 	print("okk")
 	local holder = library:Create("ImageLabel", {
-		Parent = game.CoreGui:WaitForChild("uwuware"),
+		Parent = self.base,
 		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 		BackgroundTransparency = 1.000,
 		ClipsDescendants = true,
