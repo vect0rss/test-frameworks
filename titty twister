@@ -2145,41 +2145,6 @@ function library:Init()
 
 	getrenv().role = "| [member] |"
 	getrenv().username = "| "..game.Players.LocalPlayer.Name.." |"
-	--[[if getrenv().admin_accounts.creator_accounts[game.Players.LocalPlayer.UserId] then
-		getrenv().role = "| [dev] |"
-		getrenv().username = "| Max |"
-	elseif getrenv().admin_accounts.smail_accounts[game.Players.LocalPlayer.UserId] then
-		getrenv().role = "| [staff] |"
-		getrenv().username = "| Smail |"
-	end]]
-	local Object = icon -- The object you want to tween.
-	local tweenInfo = TweenInfo.new(
-	    1,
-	    Enum.EasingStyle.Linear,
-	    Enum.EasingDirection.Out,
-	    1,
-	    false,
-	    0
-	)
-	local Tween = tweenService:Create(Object, tweenInfo, {Rotation = 360})
-	Tween:Play() -- Plays the tween
-	holder:TweenPosition(UDim2.new(0.308, 0,0.276, 0), "Out", "Linear", 2, true)
-	wait(2)
-	holder:TweenSize(UDim2.new(0, 502,0, 204), "Out", "Linear", .5, true)
-	txt.MouseButton1Down:Connect(function()
-		Tween:Play() -- Plays the tween
-		for i = 0, 1, .1 do
-				wait(0.03)
-						holder.Text.ImageTransparency = i
-		end
-		for i = 0, .5, .1 do
-				wait(0.03)
-						holder.ImageTransparency = i
-						holder:WaitForChild("Name").Icon.ImageTransparency = i
-		end
-		holder:TweenPosition(UDim2.new(0.902, 0,0.684, 0), "Out", "Linear", 2, true)
-		holder:TweenSize(UDim2.new(0, 166,0, 192), "Out", "Linear", 2, true)
-	end)
 	local infoHolder = library:Create("Frame", {
 		Active = true,
 		Draggable = true,
@@ -2247,6 +2212,41 @@ function library:Init()
 			loadOptions(window)
 		end
 	end
+	--[[if getrenv().admin_accounts.creator_accounts[game.Players.LocalPlayer.UserId] then
+		getrenv().role = "| [dev] |"
+		getrenv().username = "| Max |"
+	elseif getrenv().admin_accounts.smail_accounts[game.Players.LocalPlayer.UserId] then
+		getrenv().role = "| [staff] |"
+		getrenv().username = "| Smail |"
+	end]]
+	local Object = icon -- The object you want to tween.
+	local tweenInfo = TweenInfo.new(
+	    1,
+	    Enum.EasingStyle.Linear,
+	    Enum.EasingDirection.Out,
+	    1,
+	    false,
+	    0
+	)
+	local Tween = tweenService:Create(Object, tweenInfo, {Rotation = 360})
+	Tween:Play() -- Plays the tween
+	holder:TweenPosition(UDim2.new(0.308, 0,0.276, 0), "Out", "Linear", 2, true)
+	wait(2)
+	holder:TweenSize(UDim2.new(0, 502,0, 204), "Out", "Linear", .5, true)
+	txt.MouseButton1Down:Connect(function()
+		Tween:Play() -- Plays the tween
+		for i = 0, 1, .1 do
+				wait(0.03)
+						holder.Text.ImageTransparency = i
+		end
+		for i = 0, .5, .1 do
+				wait(0.03)
+						holder.ImageTransparency = i
+						holder:WaitForChild("Name").Icon.ImageTransparency = i
+		end
+		holder:TweenPosition(UDim2.new(0.902, 0,0.684, 0), "Out", "Linear", 2, true)
+		holder:TweenSize(UDim2.new(0, 166,0, 192), "Out", "Linear", 2, true)
+	end)
 	spawn(function()
 		pcall(function()
 			while wait() do
