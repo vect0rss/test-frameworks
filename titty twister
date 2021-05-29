@@ -2121,7 +2121,7 @@ function library:Init()
 		Size = UDim2.new(0, 304, 0, 204),
 		Image = "http://www.roblox.com/asset/?id=5545516032",
 	})
-	local hmm = library:Create("Frame"{
+	local hmm = library:Create("Frame", {
 		Parent = holder,
 		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 		BackgroundTransparency = 1.000,
@@ -2247,7 +2247,7 @@ function library:Init()
 	game:GetService("RunService").RenderStepped:Connect(function()
 		infoHolder.BorderColor3 = getrenv().ui_settings.main_colour
 	end)
-	
+
 	for _, window in next, self.windows do
 		if window.canInit and not window.init then
 			window.init = true
