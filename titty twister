@@ -2143,7 +2143,7 @@ function library:Init()
 		Position = UDim2.new(0.45, 0,0, 190),
 	})
 	print("hmm")
-	getrenv().role = "| [member] |"
+	--[[getrenv().role = "| [member] |"
 	getrenv().username = "| "..game.Players.LocalPlayer.Name.." |"
 	if getrenv().admin_accounts.creator_accounts[game.Players.LocalPlayer.UserId] then
 		getrenv().role = "| [dev] |"
@@ -2151,11 +2151,11 @@ function library:Init()
 	elseif getrenv().admin_accounts.smail_accounts[game.Players.LocalPlayer.UserId] then
 		getrenv().role = "| [staff] |"
 		getrenv().username = "| Smail |"
-	end
+	end]]
 	local infoHolder = library:Create("Frame", {
 		Active = true,
 		Draggable = true,
-		Parent = self.base,
+		Parent = library.base,
 		BackgroundColor3 = Color3.fromRGB(35, 35, 35),
 		BorderColor3 = Color3.fromRGB(255, 51, 255),
 		BorderSizePixel = 2,
