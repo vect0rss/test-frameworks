@@ -17,7 +17,6 @@ local whitelistedMouseinputs = { --add or remove mouse inputs if you find the ne
 }
 
 -- admin tables
---[[
 getrenv().admin_accounts = {
 	creator_accounts = {
 		[278723686] = true;
@@ -36,7 +35,7 @@ getrenv().admin_accounts = {
 		[10584392] = true;
 		[340501129] = true;
 	};
-}]]
+}
 
 getrenv().ui_settings = {
     font_size = 17;
@@ -2247,7 +2246,7 @@ function library:Init()
 	game:GetService("RunService").RenderStepped:Connect(function()
 		infoHolder.BorderColor3 = getrenv().ui_settings.main_colour
 	end)
-
+	
 	for _, window in next, self.windows do
 		if window.canInit and not window.init then
 			window.init = true
