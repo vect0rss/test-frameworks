@@ -2240,13 +2240,6 @@ function library:Init()
 		FillDirection = Enum.FillDirection.Horizontal,
 		SortOrder = Enum.SortOrder.LayoutOrde,
 	})
-	txt.MouseButton1Down:Connect(function()
-      library:Close()
-	end)
-	game:GetService("RunService").RenderStepped:Connect(function()
-		infoHolder.BorderColor3 = getrenv().ui_settings.main_colour
-	end)
-	
 	for _, window in next, self.windows do
 		if window.canInit and not window.init then
 			window.init = true
@@ -2261,6 +2254,12 @@ function library:Init()
 				time.Text = "| "..tostring(timedata.hour..";"..timedata.min..";"..timedata.sec).." |"
 			end
 		end)
+	end)
+	txt.MouseButton1Down:Connect(function()
+      library:Close()
+	end)
+	game:GetService("RunService").RenderStepped:Connect(function()
+		infoHolder.BorderColor3 = getrenv().ui_settings.main_colour
 	end)
 end
 
