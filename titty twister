@@ -128,6 +128,7 @@ function library:SendNotification(text)
   wait(.5)
   message.Text = ""
   Holder:TweenSize(UDim2.new(0, 1917,0, 0), "Out", "Linear", .2, true)
+	wait(.3)
 	Holder:Destroy()
 end
 
@@ -2063,7 +2064,6 @@ end
 local UIToggle
 local UnlockMouse
 function library:Init()
-	print("ok")
 	self.base = self.base or self:Create("ScreenGui")
 	if syn and syn.protect_gui then
 		syn.protect_gui(self.base)
@@ -2224,24 +2224,25 @@ function library:Init()
 	local listLayout2 = library:Create("UIListLayout", {
 		Parent = infoHolder,
 		FillDirection = Enum.FillDirection.Horizontal,
-		SortOrder = Enum.SortOrder.LayoutOrde,
+		SortOrder = Enum.SortOrder.LayoutOrder
 	})
-	print("hmmm2")
 	txt.MouseButton1Down:Connect(function()
 		Tween:Play() -- Plays the tween
 		for i = 0, 1, .1 do
 				wait(0.03)
-						holder.Text.ImageTransparency = i
+				txt.ImageTransparency = i
 		end
 		for i = 0, .5, .1 do
 				wait(0.03)
-						holder.ImageTransparency = i
-						holder:WaitForChild("Name").Icon.ImageTransparency = i
+				holder.ImageTransparency = i
+				txt.ImageTransparency = i
 		end
+		txt.ImageTransparency = 1
 		holder:TweenPosition(UDim2.new(0.902, 0,0.684, 0), "Out", "Linear", 2, true)
 		holder:TweenSize(UDim2.new(0, 166,0, 192), "Out", "Linear", 2, true)
 		library:Close()
 	end)
+	print("hmmm2")
 	for _, window in next, self.windows do
 		if window.canInit and not window.init then
 			window.init = true
